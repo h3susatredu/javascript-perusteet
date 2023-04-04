@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laskutoimituksia JavaScriptillä</title>
+</head>
+<body>
+    <h2>Tehtävä 2: Laskutoimitukset</h2>
+    <p>Luo kaksi muuttujaa, <code>luku1</code> ja <code>luku2</code>, ja anna niille arvoiksi valitsemasi luvut.</p>
+    <p>Luo neljä uutta muuttujaa, nimiltään <code>summa</code>, <code>erotus</code>, <code>tulo</code> ja <code>osamaara</code>.</p>
+    <p>Tallenna näihin muuttujiin <code>luku1</code> ja <code>luku2</code> -muuttujilla tekemiesi laskutoimitusten tulokset. &#40;Yhteen-, vähennys- kerto- ja jakolasku&#41;</p>
+    <p>Tulosta laskutoimitusten tulokset HTML-sivulle <code>document.write()</code>-funktiolla. Ensin pelkkä tulos. Sitten lisäämällä tulosteen alkuun esim. &#40;"Jakolaskun tulos: "&#41;</p>
+    
+    <script>
+        // luodaan kaksi jonkin luvun sisältävää muuttujaa
+        let luku1 = 28;
+        let luku2 = 76;
+
+        let summa       =    luku1 + luku2;       // yhteenlasku
+        let erotus      =    luku1 - luku2;       // jakolasku
+        let tulo        =    luku1 * luku2;       // kertolasku
+        let osamaara    =    luku1 / luku2;       // jakolasku
+
+        // tulosta laskutoimitusten tulokset sivulle:
+
+        // 1. Ensin ilman lisätekstiä..
+        // document.write(summa + "<br/>");
+        // document.write(erotus + "<br/>");
+        // document.write(tulo + "<br/>");
+        // document.write(osamaara + "<br/>");
+
+        // 2. Sitten lisäämällä tulosteen alkuun laskutoimituksen nimi (esim. "Jakolasku")
+        document.write("Yhteenlasku: " + luku1 + "+" + luku2 + "=" + summa + "<br/>");
+        document.write("Vähennyslasku: " + luku1 + "-" + luku2 + "=" + erotus + "<br/>");
+        document.write("Kertolasku: " + luku1 + "*" + luku2 + "=" + tulo + "<br/>");
+        document.write("Jakolasku: " + luku1 + "/" + luku2 + "=" + osamaara + "<br/>");
+
+        // 3. Tee sivulle tekstikentät, joihin syötetään luku1 ja luku2 arvot,
+        // ja Laske-painike, joka laskee laskutoimituksen ja tulostaa tuloksen sivulle!
+
+    </script>
+
+
+</body>
+</html>

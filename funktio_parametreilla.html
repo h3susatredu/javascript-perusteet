@@ -1,0 +1,16 @@
+<script>
+    let tulos = laske(200, 150, "-");
+
+    function laske(luku1, luku2, laskutoimitus)
+    {
+        if(laskutoimitus === "+")
+            return luku1 + luku2;
+        else if(laskutoimitus === "-")
+            return luku1 - luku2;
+        else if(laskutoimitus === "*")
+            return luku1 * luku2;
+        else if(laskutoimitus === "/")
+            return luku1 / luku2;
+    }
+    console.log("Tulos: " + tulos);
+</script>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Käyttäjän syötteen käsittely JavaScriptillä</title>
+</head>
+
+<body>
+
+    <h1>Käyttäjän syötteen käsittely Switchillä</h1>
+    <form>
+        <label>Luku 1</label>
+        <input type="number" id="luku1">
+        
+        <select id="laskutoimitus">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
+
+        <label>Luku 2</label>
+        <input type="number" id="luku2">
+
+        <input type="button" value="Laske" onclick="laske()">
+    </form>
+
+    <h2 id="tulos"></h2>
+
+    <script>
+
+        function laske() {
+            console.log("Lasketaan..");
+
+            let luku1 = document.getElementById("luku1").value;
+            let luku2 = document.getElementById("luku2").value;
+
+            luku1 = parseFloat(luku1);    // integer = kokonaisluku
+            luku2 = parseFloat(luku2);    // float = desimaaliluku
+
+            let laskutoimitus = document.getElementById("laskutoimitus").value;
+            let tulos = 0;
+
+
+            switch (laskutoimitus) {
+                case "+":
+                    tulos = luku1 + luku2;
+                    document.getElementById("tulos").innerHTML += luku1 + " + " + luku2 + " = " + tulos + "<br/>";
+                    break;
+                case "-":
+                    tulos = luku1 - luku2;
+                    document.getElementById("tulos").innerHTML += luku1 + " - " + luku2 + " = " + tulos + "<br/>";
+                    break;
+                case "*":
+                    tulos = luku1 * luku2;
+                    document.getElementById("tulos").innerHTML += luku1 + " * " + luku2 + " = " + tulos + "<br/>";
+                    break;
+                case "/":
+                    tulos = luku1 / luku2;
+                    document.getElementById("tulos").innerHTML += luku1 + " / " + luku2 + " = " + tulos + "<br/>";
+                    break;
+                // default:
+                //     break;
+            }
+
+
+            console.log("Laskutoimituksen tulos: " + tulos);
+
+            // document.getElementById("tulos").innerHTML += "Tulos: " + tulos + "<br/>";
+        }
+
+    </script>
+
+</body>
+</html>

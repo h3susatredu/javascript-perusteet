@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merkkijonot eli Stringit</title>
+</head>
+<body>
+    
+<h1>Merkkijonot eli Stringit</h1>
+
+<!-- JavaScript voidaan kirjoittaa script-tagien sisään -->
+<script>
+
+    console.log("JS toimii");
+
+    // Muuttuja
+    let firstName = "Heikki";
+    let lastName = "Tikkanen";
+    let nickName;
+
+    // let fullNameWithNick = firstName + nickName + lastName;
+    // let fullNameWithNick = firstName + " " + nickName + " " + lastName;
+    let introduction = `Hei! Minä olen ${firstName} ${nickName} ${lastName}.`;
+
+    // console.log tulostaa tässä tapauksessa muuttujan sisällön selaimen konsoliin (Inspect-kehittäjätyökaluvalikossa)
+    console.log(introduction);
+    // document.write tulostaa tässä HTML-sivulle sulkuihin laitetun sisällön
+    document.write("<p>" + introduction + "</p>");
+
+    // Tässä päivitetään muuttujan nickName arvo, ja muuttujan introduction arvo
+    nickName = "'Hege'";
+    introduction = `Hei! Minä olen nyt ${firstName} ${nickName} ${lastName}.`;
+
+    // Ja sitten tulostetaan introduction uudelleen konsoliin ja HTML-sivulle
+    console.log(introduction);
+    document.write("<p>" + introduction + "</p>");
+
+</script>
+
+    
+</body>
+</html>
+
+
+
+
+

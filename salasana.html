@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salasanan tarkistus</title>
+</head>
+<body>
+
+    <h1>Kirjaudu sisään</h1>
+    
+    <form onsubmit="tarkista(event)">
+        <input type="email" placeholder="Kirjoita sähköpostiosoite" id="email">
+        <input type="password" placeholder="Kirjoita salasana" id="salasana">
+        <input type="submit" value="Kirjaudu">
+    </form>
+
+    <p id="ilmoitus">Tähän tulee tieto, menikö salasana oikein..</p>
+
+<script>
+    let salasana = "12345";
+    let email ="heikki.tikkanen@redu.fi";
+
+    function tarkista(event) {
+        event.preventDefault();
+        // kun salasana ja sähköposti menee oikein..
+        if (document.getElementById("salasana").value === salasana && document.getElementById("email").value === email) {
+            document.getElementById("ilmoitus").innerHTML = "Oikea salasana ja sähköpostiosoite!"
+        }
+        // ..tai kun jompi kumpi menee väärin
+        else if (document.getElementById("salasana").value !== salasana || document.getElementById("email").value !== email) {
+            document.getElementById("ilmoitus").innerHTML = "Väärä salasana tai sähköposti!"
+        }
+    }
+</script>
+</body>
+</html>

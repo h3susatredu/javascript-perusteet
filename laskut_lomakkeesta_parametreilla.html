@@ -1,0 +1,44 @@
+<form>
+    <input type="number" placeholder="Luku 1" id="luku1">
+    <input type="number" placeholder="Luku 2" id="luku2">
+
+    <input type="button" value="+" onclick="yhteenlasku(document.getElementById('luku1').value, document.getElementById('luku2').value)">
+    <input type="button" value="-" onclick="vahennyslasku(document.getElementById('luku1').value, document.getElementById('luku2').value)">
+    <input type="button" value="*" onclick="kertolasku(document.getElementById('luku1').value, document.getElementById('luku2').value)">
+    <input type="button" value="/" onclick="jakolasku(document.getElementById('luku1').value, document.getElementById('luku2').value)">
+</form>
+
+<p id="tulosteksti">Tähän tulee tulosteksti.</p>
+
+<script>
+    // muuttuja nimeltä tulos, arvo ensin nolla
+    let tulos = 0;
+    // funktio yhteenlaskulle, ottaa vastaan parametrit: luku1, luku2
+    function yhteenlasku(luku1, luku2) {
+        tulos = parseInt(luku1) + parseInt(luku2);
+        printtaaTulos();
+    }
+
+    // funktio vähennyslaskulle, ottaa vastaan parametrit: luku1, luku2
+    function vahennyslasku(luku1, luku2) {
+        tulos = parseInt(luku1) - parseInt(luku2);
+        printtaaTulos();
+    }
+
+    // funktio kertolaskulle, ottaa vastaan parametrit: luku1, luku2
+    function kertolasku(luku1, luku2) {
+        tulos = parseInt(luku1) * parseInt(luku2);
+        printtaaTulos();
+    }
+
+    // funktio jakolaskulle, ottaa vastaan parametrit: luku1, luku2
+    function jakolasku(luku1, luku2) {
+        tulos = parseInt(luku1) / parseInt(luku2);
+        printtaaTulos();
+    }
+
+    // kaikki funktiot tulostavat oman laskutoimituksensa tuloksen sivun p-elementtiin
+    function printtaaTulos() {
+       document.getElementById("tulosteksti").innerHTML = tulos; 
+    }
+</script>

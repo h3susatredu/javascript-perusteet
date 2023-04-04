@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loogiset operaattorit</title>
+</head>
+<body>
+    <h1>Loogiset operaattorit</h1>
+    <p>Loogisilla operaattoreilla tarkistetaan muuttujien ja funktioiden palauttamien tulosten arvoja.</p>
+    <p>Niillä voidaan tarkistaa yksi tai useampi arvo kerrallaan, ja vertailla niitä.</p>
+    <p>"EQUALS": <code>==</code> "NOT EQUALS": <code>!=</code> "AND": <code>&&</code> "OR": <code>||</code></p>
+    <p>JavaScriptissä muuttujan arvon lisäksi sen tyyppi voi merkitä, ja se tarkistetaan lisäämällä kolmas =-merkki:</p>
+    <p><code>===</code> ja <code>!==</code></p>
+
+
+    <h2>Tehtävä 1: "Salasana"</h2>
+    <p>Luo JavaScriptillä muuttuja nimeltä "salasana" ja anna sille jokin arvo.</p>
+    <p>Tee lomake, jossa on tekstikenttä ja painike. Painike suorittaa funktion, joka tarkistaa, onko tekstikenttään kirjoitettu teksti sama, kuin "salasana"-muuttujan arvo.</p>
+    <p>Jos syötetty teksti on sama kuin "salasana"-muuttuja, sivulla näkyy teksti "Salasana on oikea!"</p>
+    <p>Jos syötetty teksti ei täsmää "salasanaan", sivulla näkyy teksti "Väärä salasana".</p>
+
+    <h2>Tehtävä 2: "Salasana ja sähköposti"</h2>
+    <p>Jatka edellisestä tehtävästä niin, että lomakkeessa on kenttä myös sähköpostille.</p>
+    <p>Luo JavaScriptillä uusi muuttuja, "email".</p>
+    <p>Tarkista nyt napin painalluksella, onko molemmissa kentissä oikea syöte. Vertaa salasanan lisäksi sähköpostikentän syötettä "email"-muuttujaan.</p>
+    <p>Jos molemmat ovat oikein, näytä sivulla teksti "Kirjautunut sisään!". Jos jompikumpi on väärin, näytä teksti "Sähköposti tai salasana on väärin".</p>
+    <h3>Esimerkki:</h3>
+    <code>if (salasanakentan_arvo === salasana && sähköpostikentän_arvo === email) { // näytä kirjautunut sisään}</code>
+</body>
+</html>
+
+<style>
+    code {
+        padding: 2px;
+        background-color: beige;
+    }
+</style>
