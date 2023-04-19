@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pelilista</title>
+</head>
+<body>
+    <div id="container">
+
+    </div>
+</body>
+</html>
+
+
+<script>
+    // string, eli merkkijono -tietotyyppi (on jo itsessään objekti/literaali)
+    let etunimi = "Erkki";
+
+    // "Primitiivit" datatyypit
+
+    // integer, eli kokonaisluku
+    let numero = 1984;
+
+    // float, eli "liukuluku", desimaaliluku
+    let desimaali = 5.03;
+
+    // boolean, arvo on true tai false, tosi tai epätosi
+    let totuus = true;
+    let valhe = false;
+
+    // null, eli tyhjä
+    let tyhja = null;
+
+    // undefined, eli määrittelemätön
+    let joku = undefined;
+
+
+    // Object, eli objekti - koostuu muista datatyypeistä, tai vaikka muista objekteista
+    // Objektit luodaan JSON- eli "JavaScript Object Notation" -syntaksilla.
+    let game1 = {
+        name: "Skyrim",
+        genre: "RPG",
+        releaseYear: 2011,
+        url: "https://elderscrolls.bethesda.net/en/skyrim",
+        image: "https://upload.wikimedia.org/wikipedia/en/1/15/The_Elder_Scrolls_V_Skyrim_cover.png",
+        score: 78
+    }
+    // toinen objekti, mallin vuoksi..
+    let game2 = {
+        name: "Witcher 3",
+        genre: "RPG",
+        releaseYear: 2015,
+        url: "https://www.thewitcher.com/us/en/witcher3",
+        image: "https://fingerguns.net/wp-content/uploads/2022/12/witcherheader.jpg",
+        score: 96
+    }
+
+    let game3 = {
+        name: "Kingdom Come: Deliverance",
+        genre: "RPG",
+        releaseYear: 2018,
+        url: "https://www.kingdomcomerpg.com/",
+        // image: "https://i.redd.it/698b2jw6nki01.png",
+        image: "https://muropaketti.com/wp-content/uploads/2018/02/kingdom-come-deliverance-002-784x441.jpg",
+        score: 98
+    }
+
+    // array eli lista voi sisältää primitiivien lisäksi myös objekteja!
+    let games = [game1, game2, game3];
+    
+    // pistenotaatio "dot notation" mahdollistaa objektin ominaisuuksiin käsiksi pääsemisen:
+    // console.log(game1.name);
+
+document.write(`<div id="container">`)
+// foreach-luuppi käy läpi games-listan, ja tulostaa HTML-sivulle joka pelistä sen ominaisuudet
+games.forEach(game => {
+    document.write(`<a href="${game.url}" target="_blank"><h1>${game.name}</h1></a>`);
+    document.write(`<img src="${game.image}" style="height: 250px" />`);
+    document.write(`<p>Genre: ${game.genre}</p>`);
+    document.write(`<p>Release year: ${game.releaseYear}</p>`);
+    document.write(`<p>Score: ${game.score}</p>`);
+}
+);
+
+document.write(`</div>`)
+
+</script>
+
+<style>
+
+    #container {
+        margin: 0 auto;
+        width: 50%;
+    }
+</style>

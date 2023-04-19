@@ -1,0 +1,37 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+
+    const person =  {
+        firstName: "Heikki",
+        lastName: "Tikkanen",
+        email: "heikki.tikkanen@redu.fi",
+        occupation: "teacher",
+        age: 38
+    };
+
+    // for in -silmukka
+    for (const key in person) {
+        if (Object.hasOwnProperty.call(person, key)) {
+            const element = person[key];
+            console.log(element);
+        }
+    }
+
+</script>

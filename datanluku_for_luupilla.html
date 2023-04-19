@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pelilista</title>
+</head>
+<body>
+    
+    <div id="container">
+        <h1>My Favorite Games</h1>
+    </div>
+</body>
+</html>
+
+
+<script>
+    // string, eli merkkijono -tietotyyppi (on jo itsessään objekti/literaali)
+    let etunimi = "Erkki";
+
+    // "Primitiivit" datatyypit
+
+    // integer, eli kokonaisluku
+    let numero = 1984;
+
+    // float, eli "liukuluku", desimaaliluku
+    let desimaali = 5.03;
+
+    // boolean, arvo on true tai false, tosi tai epätosi
+    let totuus = true;
+    let valhe = false;
+
+    // null, eli tyhjä
+    let tyhja = null;
+
+    // undefined, eli määrittelemätön
+    let joku = undefined;
+
+
+    // Object, eli objekti - koostuu muista datatyypeistä, tai vaikka muista objekteista
+    // Objektit luodaan JSON- eli "JavaScript Object Notation" -syntaksilla.
+    let game1 = {
+        name: "Skyrim",
+        genre: "RPG",
+        releaseYear: 2011,
+        url: "https://elderscrolls.bethesda.net/en/skyrim",
+        image: "https://upload.wikimedia.org/wikipedia/en/1/15/The_Elder_Scrolls_V_Skyrim_cover.png",
+        score: 78
+    }
+    // toinen objekti, mallin vuoksi..
+    let game2 = {
+        name: "Witcher 3",
+        genre: "RPG",
+        releaseYear: 2015,
+        url: "https://www.thewitcher.com/us/en/witcher3",
+        image: "https://fingerguns.net/wp-content/uploads/2022/12/witcherheader.jpg",
+        score: 96
+    }
+
+    let game3 = {
+        name: "Kingdom Come: Deliverance",
+        genre: "RPG",
+        releaseYear: 2018,
+        url: "https://www.kingdomcomerpg.com/",
+        // image: "https://i.redd.it/698b2jw6nki01.png",
+        image: "https://muropaketti.com/wp-content/uploads/2018/02/kingdom-come-deliverance-002-784x441.jpg",
+        score: 98
+    }
+
+    // array eli lista voi sisältää primitiivien lisäksi myös objekteja!
+    let games = [game1, game2, game3];
+
+    // for-luuppi käy läpi games-listan, ja tulostaa HTML-sivulle joka pelistä sen ominaisuudet
+    for (let index = 0; index < games.length; index++) {
+        // nimitetään jokaista läpi luupattavaa peliä sanalla "game"
+        let game = games[index];
+        // luodaan pelille oma div-elementti nimellä "gamebox"
+        let gamebox = document.createElement("div");
+        // asetetaan gamebox-elementin luokaksi "gamebox"
+        gamebox.className = "gamebox";
+        // luodaan pelille otsikko-elementti
+        let gametitle = document.createElement("h2");
+        // asetetaan otsikko-elementin tekstiksi pelin nimi, joka haetaan pistenotaatiolla
+        gametitle.textContent = game.name;
+        // Luodaan pelin linkki-elementti
+        let gamelink = document.createElement("a");
+        // asetetaan linkin osoite hakemalla se pelin datasta pistenotaatiolla
+        gamelink.href = game.url;
+        // lisätään pelin otsikko-elementti linkki-elementin sisään
+        gamelink.appendChild(gametitle);
+        // lisätään linkki-elementti pelin "gamebox" - elementin sisään
+        gamebox.appendChild(gamelink);
+
+        // luodaan pelille kuva-elementti
+        let gamepic = document.createElement("img");
+        // asetetaan kuvan lähteeksi se osoite, joka on pelin image-ominaisuuden arvona
+        gamepic.src = game.image;
+        // annetaan pelin kuvalle luokka "gamepic" myöhempää css-muotoilua varten
+        gamepic.className = "gamepic";
+        // liitetään kuva pelin "gamebox"-elementin sisään
+        gamebox.appendChild(gamepic);
+
+        // luodaan p-elementti, jossa lukee pelin genre, ja liitetään se gameboxiin
+        let gameGenre = document.createElement("p");
+        gameGenre.textContent = "Genre: " + game.genre;
+        gamebox.appendChild(gameGenre);
+
+        // sama juttu pelin julkaisuvuodelle
+        let releaseYear = document.createElement("p");
+        releaseYear.textContent = "Release year: " + game.releaseYear;
+        gamebox.appendChild(releaseYear);
+
+        // ja vielä sama temppu pelin "metascorelle"
+        let gameScore = document.createElement("p");
+        gameScore.textContent = "Metascore: " + game.score;
+        gamebox.appendChild(gameScore);
+
+        // sijoitetaan pelin oma "gamebox" elementti HTML-sivun "container"-elementtiin
+        document.getElementById("container").appendChild(gamebox);
+
+    }
+
+</script>
+
+<style>
+
+    body {
+        background-image: linear-gradient(to bottom, rgb(99, 99, 99), rgb(5, 57, 87));
+    }
+
+    h1 {
+        padding: 20px;
+        text-align: center;
+        color: #fff;
+    }
+
+    h2 {
+        color: #fff;
+    }
+
+    img {
+        border-radius: 10px;
+    }
+
+    #container {
+        margin: 0 auto;
+        width: 50%;
+    }
+
+    .gamebox {
+        padding: 30px;
+        margin: 50px;
+        border-radius: 20px;
+        /* background-color: rgb(165, 194, 195); */
+        background-image: linear-gradient(to bottom, rgb(68, 93, 117), rgb(165, 194, 195));
+        text-align: center;
+    }
+
+    .gamepic {
+        height: 250px;
+    }
+</style>

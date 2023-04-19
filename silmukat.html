@@ -1,0 +1,38 @@
+<div id="list"> </div>
+
+<script>
+    
+    const fruits = ["Mango", "Kiwi", "Apple", "Banana", "Orange", "Pear", "Peach"];
+
+    // console.log(fruits);
+
+    // // foreach -silmukka
+    fruits.forEach( fruit => {
+        console.log(fruits.indexOf(fruit));
+        console.log(fruit);
+    });
+
+    // // for -silmukka
+    for (let index = 0; index < fruits.length; index++) {
+        console.log(index);
+        console.log(fruits[index]);
+    }
+
+    // järjestetään listan elementit aakkosittain
+    fruits.sort();
+    // käännetään aakkosjärjestys toisin päin, toimii myös ilman aakkostusta ensin
+    fruits.reverse();
+
+    // while -silmukka
+    let index = 0;
+
+    while (index < fruits.length) {
+        console.log(index);
+        console.log(fruits[index]);
+
+        // tulosta html:ään:
+        document.write(fruits[index] + "<br/>");
+        // document.getElementById("list").innerHTML += fruits[index] + "<br/>";
+        index++;
+    }
+</script>
