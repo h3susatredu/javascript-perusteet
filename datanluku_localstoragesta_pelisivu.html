@@ -4,72 +4,44 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pelilista</title>
+    <title>Pelilista Local Storagesta</title>
 </head>
 <body>
-    
     <div id="container">
-        <h1>My Favorite Games</h1>
+        <h1>Listing Games from Local Storage</h1>
     </div>
+
+    <div id="form">
+        <h2>Add a new game</h2>
+        <form>
+            <input type="text" placeholder="Game name" id="name">
+            <input type="text" placeholder="Game genre" id="genre">
+            <input type="number" placeholder="Release year" id="year">
+            <input type="text" placeholder="Site url" id="url">
+            <input type="text" placeholder="Image" id="image">
+            <input type="number" placeholder="Metascore" id="score">
+            <input type="submit" value="Add" onclick="addGame()">
+        </form>
+    </div>
+
 </body>
 </html>
 
 
 <script>
-    // string, eli merkkijono -tietotyyppi (on jo itsessään objekti/literaali)
-    let etunimi = "Erkki";
-
-    // "Primitiivit" datatyypit
-
-    // integer, eli kokonaisluku
-    let numero = 1984;
-
-    // float, eli "liukuluku", desimaaliluku
-    let desimaali = 5.03;
-
-    // boolean, arvo on true tai false, tosi tai epätosi
-    let totuus = true;
-    let valhe = false;
-
-    // null, eli tyhjä
-    let tyhja = null;
-
-    // undefined, eli määrittelemätön
-    let joku = undefined;
-
-
-    // Object, eli objekti - koostuu muista datatyypeistä, tai vaikka muista objekteista
-    // Objektit luodaan JSON- eli "JavaScript Object Notation" -syntaksilla.
-    let game1 = {
-        name: "Skyrim",
-        genre: "RPG",
-        releaseYear: 2011,
-        url: "https://elderscrolls.bethesda.net/en/skyrim",
-        image: "https://upload.wikimedia.org/wikipedia/en/1/15/The_Elder_Scrolls_V_Skyrim_cover.png",
-        score: 78
-    }
-    // toinen objekti, mallin vuoksi..
-    let game2 = {
-        name: "Witcher 3",
-        genre: "RPG",
-        releaseYear: 2015,
-        url: "https://www.thewitcher.com/us/en/witcher3",
-        image: "https://fingerguns.net/wp-content/uploads/2022/12/witcherheader.jpg",
-        score: 96
-    }
-    // kolmas objekti
-    let game3 = {
-        name: "Kingdom Come: Deliverance",
-        genre: "RPG",
-        releaseYear: 2018,
-        url: "https://www.kingdomcomerpg.com/",
-        image: "https://muropaketti.com/wp-content/uploads/2018/02/kingdom-come-deliverance-002-784x441.jpg",
-        score: 98
+    // First we make an empty list for our games
+    let games = [];
+    // Then we read all the game data from localStorage inside a for loop
+    for (let index = 0; index < localStorage.length; index++) {
+        // save each game as stringifed JSON into variable "element"
+        // Remember to use existing keys when getting items from localstorage!
+        const element = localStorage.getItem("game" + (index+1));
+        // Then we convert the stringifed element back into a JSON object
+        // and add it to the games array with push function
+        games.push(JSON.parse(element));
     }
 
-    // array eli lista voi sisältää primitiivien lisäksi myös objekteja!
-    let games = [game1, game2, game3];
-
+    // This for loop prints the items from our games list to the page
     // for-luuppi käy läpi games-listan, ja tulostaa HTML-sivulle joka pelistä sen ominaisuudet
     for (let index = 0; index < games.length; index++) {
         // nimitetään jokaista läpi luupattavaa peliä sanalla "game"
@@ -117,7 +89,21 @@
 
         // sijoitetaan pelin oma "gamebox" elementti HTML-sivun "container"-elementtiin
         document.getElementById("container").appendChild(gamebox);
+    }
 
+
+    function addGame() {
+        let newGame = {
+            name: document.getElementById("name").value,
+            genre: document.getElementById("genre").value,
+            image: document.getElementById("image").value,
+            releaseYear: document.getElementById("year").value,
+            score: document.getElementById("score").value,
+            url: document.getElementById("url").value,
+        };
+        console.log(newGame);
+
+        localStorage.setItem("game" + (localStorage.length + 1), JSON.stringify(newGame));
     }
 
 </script>

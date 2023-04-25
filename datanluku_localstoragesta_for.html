@@ -1,0 +1,19 @@
+<script>
+    // Reading data from locastorage using a loop
+
+    // First make an empty list, that will later contain data read from localstorage
+    let data = [];
+
+    // LocalStorage is an API that has .length property like arrays do.
+    // Make a for loop using the length of localStorage
+    for (let index = 0; index < localStorage.length; index++) {
+        // Save every localStorage item as "element"
+        // Note that the key used in getItem needs to exist / be initialized in localStorage. 
+        const element = localStorage.getItem("game"+(index+1));
+        // Convert the saved "element" which is a string, into a JSON object with "JSON.parse" function
+        data.push(JSON.parse(element));
+    }
+    // Print the data array, that should now contain all the items read from localStorage
+    console.log(data);
+
+</script>

@@ -1,0 +1,48 @@
+<script>
+    // 0. Luo uusi tiedosto! (tämä tiedosto)
+
+    // 1. Luo pelidata, eli JSON-objektit (voi copy pastettaa)
+    // 2. Luo lista pelidatasta (voi copy pastettaa)
+
+    let games = [
+        {
+            name: "Skyrim",
+            genre: "RPG",
+            releaseYear: 2011,
+            url: "https://elderscrolls.bethesda.net/en/skyrim",
+            image: "https://upload.wikimedia.org/wikipedia/en/1/15/The_Elder_Scrolls_V_Skyrim_cover.png",
+            score: 78
+        },
+        {
+            name: "Witcher 3",
+            genre: "RPG",
+            releaseYear: 2015,
+            url: "https://www.thewitcher.com/us/en/witcher3",
+            image: "https://fingerguns.net/wp-content/uploads/2022/12/witcherheader.jpg",
+            score: 96
+        },
+        {
+            name: "Kingdom Come: Deliverance",
+            genre: "RPG",
+            releaseYear: 2018,
+            url: "https://www.kingdomcomerpg.com/",
+            image: "https://muropaketti.com/wp-content/uploads/2018/02/kingdom-come-deliverance-002-784x441.jpg",
+            score: 98
+        }
+    ];
+
+    // 3. Luo luuppi, joka käy läpi pelien listan
+    //    (foreach, for tai while)
+    games.forEach(peli => {
+        // 4. Luupin sisällä tallenna listan kukin peli locastorageen:
+        //    4.0.  luo joka pelille oma avain (esim "peli1", "peli2", jne)
+        //    4.1.  muunna peli JSON.stringify:llä stringiksi
+        //    4.2.  tallenna muunnettu peli luomallasi avaimella
+        localStorage.setItem("game"+(games.indexOf(peli)+1), JSON.stringify(peli));
+    });
+
+
+
+
+
+</script>

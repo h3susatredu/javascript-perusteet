@@ -1,0 +1,59 @@
+<script>
+
+let game1 = {
+        name: "Skyrim",
+        genre: "RPG",
+        releaseYear: 2011,
+        url: "https://elderscrolls.bethesda.net/en/skyrim",
+        image: "https://upload.wikimedia.org/wikipedia/en/1/15/The_Elder_Scrolls_V_Skyrim_cover.png",
+        score: 78
+    }
+
+// toinen objekti, mallin vuoksi..
+let game2 = {
+    name: "Witcher 3",
+    genre: "RPG",
+    releaseYear: 2015,
+    url: "https://www.thewitcher.com/us/en/witcher3",
+    image: "https://fingerguns.net/wp-content/uploads/2022/12/witcherheader.jpg",
+    score: 96
+}
+
+// kolmas objekti
+let game3 = {
+    name: "Kingdom Come: Deliverance",
+    genre: "RPG",
+    releaseYear: 2018,
+    url: "https://www.kingdomcomerpg.com/",
+    image: "https://muropaketti.com/wp-content/uploads/2018/02/kingdom-come-deliverance-002-784x441.jpg",
+    score: 98
+}
+
+    // array eli lista voi sisältää primitiivien lisäksi myös objekteja!
+    let games = [game1, game2, game3];
+
+
+    // Harjoitellaan localStoragen käyttöä:
+    localStorage.setItem("nimi", "Jomppe");
+    localStorage.setItem("nimi", "Pena");
+    localStorage.setItem("numero", "1800");
+
+    let nimi = localStorage.getItem("nimi");
+    // document.write(nimi);
+
+    // localStorage.removeItem("nimi");
+    // localStorage.clear();
+
+    // kokeillaan tallentaa objekti sellaisenaan - ei toivottu lopputulos
+    localStorage.setItem("game1", game1);
+
+    // muutetaan tallennettava objekti stringiksi JSON stringify -funktiolla ja sitten tallennetaan:
+    localStorage.setItem("game2", JSON.stringify(game2));
+
+    // kun luetaan tallennettu string, se muutetaan samalla JSON-objektiksi JSON.parse-funktiolla:
+    let peli2 = JSON.parse( localStorage.getItem("game2") );
+    // tämän jälkeen objektista voi lukea yksittäisiä kenttiä pistenotaatiolla:
+    document.write(peli2.name);
+    console.log(peli2);
+
+</script>
