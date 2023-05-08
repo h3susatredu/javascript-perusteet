@@ -7,12 +7,12 @@
     <title>Pelilista Local Storagesta</title>
 </head>
 <body>
-
+    
     <div id="container">
         <h1>Listing Games from Local Storage</h1>
         <!-- Pelit tulee tähän, kukin omaan "gamebox" -diviin -->
     </div>
-
+    <hr />
     <div id="form">
         <h2>Add a new game</h2>
         <form>
@@ -25,7 +25,9 @@
             <input type="submit" value="Add" onclick="addGame()">
         </form>
     </div>
--
+    <hr />
+    <input type="submit" value="Reset Data" onclick="resetGameData()">
+    <script src="pelilista_localstorageen_for.js"></script>
 </body>
 </html>
 
@@ -33,15 +35,9 @@
 <script>
     // First we make an empty list for our games
     let games = [];
-    // Then we read all the game data from localStorage inside a for loop
-    for (let index = 0; index < localStorage.length; index++) {
-        // save each game as stringifed JSON into variable "element"
-        // Remember to use existing keys when getting items from localstorage!
-        const element = localStorage.getItem("game" + (index+1));
-        // Then we convert the stringifed element back into a JSON object
-        // and add it to the games array with push function
-        games.push(JSON.parse(element));
-    }
+    // Then we read all the game data from localStorage and save it into the list
+    games = JSON.parse(localStorage.getItem("games"));
+    console.log(games);
 
     // This for loop prints the items from our games list to the page
     // for-luuppi käy läpi games-listan, ja tulostaa HTML-sivulle joka pelistä sen ominaisuudet
@@ -89,12 +85,20 @@
         gameScore.textContent = "Metascore: " + game.score;
         gamebox.appendChild(gameScore);
 
+        // tehdään pelille oma poistonappula
+        let del = document.createElement("div");
+        del.innerHTML = `<input type="button" value="Delete" onclick="deleteGame(${index})">`;
+        gamebox.appendChild(del);
+
         // sijoitetaan pelin oma "gamebox" elementti HTML-sivun "container"-elementtiin
         document.getElementById("container").appendChild(gamebox);
     }
 
+    // Testataan syötetyn JSON-datan tulostusta sivulle tallennusta varten
+    document.write(`<hr/><h2>Data JSON</h2><p style="color:#fff"><strong>Copy paste this into an external file to store or hardcode new games data:</strong></p><p style="color:#fff">${JSON.stringify(games)}</p>`);
 
     function addGame() {
+        // luodaan uusi pelidata JSON-objekti, jolle haetaan lomakkeen kentistä ominaisuudet (property)
         let newGame = {
             name: document.getElementById("name").value,
             genre: document.getElementById("genre").value,
@@ -104,8 +108,26 @@
             url: document.getElementById("url").value,
         };
         console.log(newGame);
+        // ennen tallennusta tarkistetaan, että newGame-objektin arvot eivät ole tyhjiä
+        // tässä vain yksi tarkistus, jatka if-lauseketta lisäämällä vaihtoehtoisia tarkistuksia
+        if (newGame.name == "") {
+            // TODO: näytetään käyttäjälle esim. "alert" (googlaa), jossa sanotaan mikä meni pieleen
+            // keskeytetään funktion suoritus
+            return;
+        }
+        // jos tarkistukset meni läpi, lisätään uusi peli välimuistissa olevaan games-listaan,
+        // ja lista tallennetaan uusi peli localStorageen
+        games.push(newGame);
+        localStorage.setItem("games", JSON.stringify(games));
+        location.reload();
+    }
 
-        localStorage.setItem("game" + (localStorage.length + 1), JSON.stringify(newGame));
+    // poistetaan peli halutulla indeksinumerolla
+    function deleteGame(gameIndex) {
+        games.splice(gameIndex, 1);
+        localStorage.clear();
+        localStorage.setItem("games", JSON.stringify(games));
+        location.reload();
     }
 
 </script>
