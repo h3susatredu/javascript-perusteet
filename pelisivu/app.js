@@ -1,5 +1,4 @@
-// First we make an empty array for our games into browser cache.
-// This is not the same as localStorage.
+// First we make an empty array for our games into browser cache. This is not the same as localStorage.
 let games = [];
 
 // Then we read all the game data from localStorage and save it into the games array
@@ -116,7 +115,6 @@ function resetGameData() {
     // lataa sivu uudelleen
     location.reload();
 }
-
-// 
+// Suoritetaan halutut funktiot heti kun sivu ladataan / Run functions immediately on page load
 loadData();
 displayGames();
