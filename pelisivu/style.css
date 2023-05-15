@@ -1,0 +1,55 @@
+p {
+    font-size: larger;
+}
+
+body {
+    background-image: linear-gradient(to bottom, rgb(99, 99, 99), rgb(5, 57, 87));
+}
+
+h1 {
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+}
+
+h2 {
+    color: #fff;
+}
+
+img {
+    border-radius: 10px;
+}
+
+#container {
+    margin: 0 auto;
+    /* width: 50%; */
+}
+
+.gamebox {
+    padding: 30px;
+    margin: 50px;
+    border-radius: 20px;
+    /* background-color: rgb(165, 194, 195); */
+    background-image: linear-gradient(to bottom, rgb(68, 93, 117), rgb(165, 194, 195));
+    text-align: center;
+}
+
+.gamepic {
+    width: 70%;
+}
+
+.ctrlBtn {
+    margin: 0 10px 0 10px;
+    padding: 20px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.ctrlBtn:hover {
+    background-color: rgb(155, 179, 201);
+}
+
+#form input {
+    font-size: larger;
+    padding: 20px;
+}

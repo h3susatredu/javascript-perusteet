@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Pelilista Local Storagesta</title>
+</head>
+<body>
+    <div id="container">
+        <h1>Listing Games from Local Storage</h1>
+        <!-- Pelit tulee tähän, kukin omaan "gamebox" -diviin -->
+    </div>
+    <hr />
+    <div id="form">
+        <h2>Add a new game</h2>
+        <form>
+            <input type="text" placeholder="Game name" id="name">
+            <input type="text" placeholder="Game genre" id="genre">
+            <input type="number" placeholder="Release year" id="year">
+            <input type="text" placeholder="Site url" id="url">
+            <input type="text" placeholder="Image" id="image">
+            <input type="number" placeholder="Metascore" id="score">
+            <input type="submit" value="Add" onclick="addGame()">
+        </form>
+    </div>
+    <hr />
+    <input type="submit" value="Reset Data" onclick="resetGameData()">
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
