@@ -14,7 +14,7 @@
     </div>
     <hr />
     <div id="form">
-        <h2>Add a new game</h2>
+        <h2 id="formTitle">Add a new game</h2>
         <form>
             <input type="text" placeholder="Game name" id="name">
             <input type="text" placeholder="Game genre" id="genre">
@@ -22,11 +22,11 @@
             <input type="text" placeholder="Site url" id="url">
             <input type="text" placeholder="Image" id="image">
             <input type="number" placeholder="Metascore" id="score">
-            <input type="submit" value="Add" onclick="addGame()">
+            <input type="button" value="Add" onclick="addGame()" id="editBtn">
         </form>
     </div>
     <hr />
-    <input type="submit" value="Reset Data" onclick="resetGameData()">
+    <input type="submit" value="Reset Data" onclick="resetGameData()" class="ctrlBtn">
     <script src="data.js"></script>
     <script src="app.js"></script>
 </body>

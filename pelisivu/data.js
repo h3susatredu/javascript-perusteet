@@ -12,7 +12,7 @@ const gamesData = [
         genre: "RPG",
         releaseYear: 2015,
         url: "https://www.thewitcher.com/us/en/witcher3",
-        image: "https://fingerguns.net/wp-content/uploads/2022/12/witcherheader.jpg",
+        image: "D:\\heikki\\javascript-perusteet\\pelisivu\\images\\witcherheader.jpg",
         score: 960
     },
     {
@@ -30,5 +30,13 @@ const gamesData = [
         releaseYear: 4566,
         score: 456,
         url: "https://www.nomanssky.com/"
+    },
+    {
+        name: "Super Mario Galaxy",
+        genre: "Platformer",
+        image: "https://i.ytimg.com/vi/YhDLt3o0V6w/maxresdefault.jpg",
+        releaseYear: "2007",
+        score: "99",
+        url: "https://fi.wikipedia.org/wiki/Super_Mario_Galaxy"
     }
 ];

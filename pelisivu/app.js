@@ -55,7 +55,7 @@ function displayGames() {
         gameScore.textContent = "Metascore: " + game.score;
         gamebox.appendChild(gameScore);
 
-        // tehdään pelille oma poistonappula
+        // tehdään pelille oma poisto- ja muokkausnappula
         let buttons = document.createElement("div");
         buttons.innerHTML =
         `<input type="button" value="Delete" onclick="deleteGame(${index})" class="ctrlBtn">
@@ -66,9 +66,6 @@ function displayGames() {
         document.getElementById("container").appendChild(gamebox);
     }
 }
-
-// Testataan syötetyn JSON-datan tulostusta sivulle tallennusta varten
-// console.log(`<hr/><h2>Data JSON</h2><p style="color:#fff"><strong>Copy paste this into an external file to store or hardcode new games data:</strong></p><p style="color:#fff">${JSON.stringify(games)}</p>`);
 
 function addGame() {
     // luodaan uusi pelidata JSON-objekti, jolle haetaan lomakkeen kentistä ominaisuudet (property)
@@ -95,6 +92,41 @@ function addGame() {
     location.reload();
 }
 
+function editGame(gameIndex) {
+    // haetaan pelilistasta index-numerolla muokattava peli välimuistiin, muuttujaan nimeltä "editedGame"
+    const editedGame = games[gameIndex];
+    // haetaan lomakkeen kenttiin muokattavan pelin tiedot
+    document.getElementById("name").value = editedGame.name;
+    document.getElementById("genre").value = editedGame.genre;
+    document.getElementById("year").value = editedGame.releaseYear;
+    document.getElementById("url").value = editedGame.url;
+    document.getElementById("image").value = editedGame.image;
+    document.getElementById("score").value = editedGame.score;
+    // vaihdetaan Add-napin teksti muotoon "Save", ja
+    document.getElementById("editBtn").value = "Save";
+    // asetetaan napin onclick-kutsuksi saveEditedGame-funktio
+    document.getElementById("editBtn").onclick = function () {saveEditedGame(gameIndex)} ;
+    // vaihdetaan Add a new game -otsikko muotoon "Edit game"
+    document.getElementById("formTitle").innerHTML = "Edit game";
+}
+
+function saveEditedGame(gameIndex) {
+    // luodaan uusi peli-objekti, jolle annetaan lomakkeen kentistä löytyvät arvot
+    let editedGame = {
+        name: document.getElementById("name").value,
+        genre: document.getElementById("genre").value, 
+        releaseYear: document.getElementById("year").value,
+        url: document.getElementById("url").value, 
+        image: document.getElementById("image").value, 
+        score: document.getElementById("score").value 
+    }
+    // korvataan vanha peli games-listassa uudella
+    games.splice(gameIndex, 1, editedGame);
+    // tallennetaan muokattu games-lista localStorageen
+    localStorage.setItem("games", JSON.stringify(games));
+    location.reload();
+}
+
 // poistetaan peli halutulla indeksinumerolla
 function deleteGame(gameIndex) {
     // poistetaan haluttu peli välimuistissa olevasta games-listasta
@@ -115,6 +147,11 @@ function resetGameData() {
     // lataa sivu uudelleen
     location.reload();
 }
+
 // Suoritetaan halutut funktiot heti kun sivu ladataan / Run functions immediately on page load
 loadData();
 displayGames();
+
+// Testataan syötetyn JSON-datan tulostusta sivulle tallennusta varten
+// console.log(`<hr/><h2>Data JSON</h2><p style="color:#fff"><strong>Copy paste this into an external file to store or hardcode new games data:</strong></p><p style="color:#fff">${JSON.stringify(games)}</p>`);
+console.log("Copy paste to save all game data:" + JSON.stringify(games));
