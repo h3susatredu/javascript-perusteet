@@ -1,23 +1,31 @@
-// First we make an empty array for our games into browser cache. This is not the same as localStorage.
+/* This file keeps a "games" list in memory and contains functions that load,
+display and edit the data in the list and it's copy in browser localStorage.*/
+
+// When the page loads, we make an empty array for our games into browser cache.
+// This is not the same as localStorage.
 let games = [];
 
-// Then we read all the game data from localStorage and save it into the games array
+// Then we read all the game data from browser's localStorage and save it into the games array.
+// This function is called in the end of this file.
 function loadData() {
     games = JSON.parse(localStorage.getItem("games"));
     console.log(games);
 }
 
-// This function renders new elements into the HTML based on what data is in "games"
+// This function renders the web page.
+// It builds new elements into the HTML based on what data is in "games" array.
+// Called at the end of this file.
 function displayGames() {
-    // This for loop prints the items from our games list to the page
-    // for-luuppi käy läpi games-listan, ja tulostaa HTML-sivulle joka pelistä sen ominaisuudet
+    // Tämä for-luuppi tulostaa sivulle games-listan pelien datan mukaisen sisällön
     for (let index = 0; index < games.length; index++) {
-        // nimitetään jokaista läpi luupattavaa peliä sanalla "game"
+        // jokainen listan elementti vuorollaan tallennetaan muuttujaan "game"
         let game = games[index];
-        // luodaan pelille oma div-elementti nimellä "gamebox"
+
+        // luodaan pelille oma div-elementti class-nimellä "gamebox"
         let gamebox = document.createElement("div");
         // asetetaan gamebox-elementin luokaksi "gamebox"
         gamebox.className = "gamebox";
+
         // luodaan pelille otsikko-elementti
         let gametitle = document.createElement("h2");
         // asetetaan otsikko-elementin tekstiksi pelin nimi, joka haetaan pistenotaatiolla
@@ -40,7 +48,7 @@ function displayGames() {
         // liitetään kuva pelin "gamebox"-elementin sisään
         gamebox.appendChild(gamepic);
 
-        // luodaan p-elementti, jossa lukee pelin genre, ja liitetään se gameboxiin
+        // luodaan p- eli tekstikappale-elementti, jossa lukee pelin genre, ja liitetään se gameboxiin
         let gameGenre = document.createElement("p");
         gameGenre.textContent = "Genre: " + game.genre;
         gamebox.appendChild(gameGenre);
@@ -67,6 +75,8 @@ function displayGames() {
     }
 }
 
+// This function adds a new game to the games-array and saves the updated array to localStorage
+// Called from the Add-button in the web page
 function addGame() {
     // luodaan uusi pelidata JSON-objekti, jolle haetaan lomakkeen kentistä ominaisuudet (property)
     let newGame = {
@@ -77,7 +87,7 @@ function addGame() {
         score: document.getElementById("score").value,
         url: document.getElementById("url").value,
     };
-    console.log(newGame);
+    // console.log(newGame);
     // ennen tallennusta tarkistetaan, että newGame-objektin arvot eivät ole tyhjiä
     // tässä vain yksi tarkistus, jatka if-lauseketta lisäämällä vaihtoehtoisia tarkistuksia
     if (newGame.name == "") {
@@ -92,6 +102,9 @@ function addGame() {
     location.reload();
 }
 
+// This function enables "edit mode" for a selected game.
+// It loads the web page input form with selected game's data and changes the form title and button texts.
+// Called when user clicks an Edit button.
 function editGame(gameIndex) {
     // haetaan pelilistasta index-numerolla muokattava peli välimuistiin, muuttujaan nimeltä "editedGame"
     const editedGame = games[gameIndex];
@@ -104,12 +117,16 @@ function editGame(gameIndex) {
     document.getElementById("score").value = editedGame.score;
     // vaihdetaan Add-napin teksti muotoon "Save", ja
     document.getElementById("editBtn").value = "Save";
-    // asetetaan napin onclick-kutsuksi saveEditedGame-funktio
-    document.getElementById("editBtn").onclick = function () {saveEditedGame(gameIndex)} ;
+    // asetetaan napin onclick-kutsuksi saveEditedGame-funktio (kääritään nimettömän funktion sisään)
+    document.getElementById("editBtn").onclick = function (){saveEditedGame(gameIndex)};
     // vaihdetaan Add a new game -otsikko muotoon "Edit game"
     document.getElementById("formTitle").innerHTML = "Edit game";
 }
 
+// This function completes an edit made for a game.
+// It creates a new game object from the input form field values,
+// saves the object to games-array, and then saves that array to localStorage.
+// Called from the Save-button when in edit mode.
 function saveEditedGame(gameIndex) {
     // luodaan uusi peli-objekti, jolle annetaan lomakkeen kentistä löytyvät arvot
     let editedGame = {
@@ -127,7 +144,8 @@ function saveEditedGame(gameIndex) {
     location.reload();
 }
 
-// poistetaan peli halutulla indeksinumerolla
+// Removes a selected game.
+// Called from Delete button.
 function deleteGame(gameIndex) {
     // poistetaan haluttu peli välimuistissa olevasta games-listasta
     games.splice(gameIndex, 1);
@@ -139,6 +157,8 @@ function deleteGame(gameIndex) {
     location.reload();
 }
 
+// Overwrites the value of localStorage "games" key with hardcoded data array from data.js.
+// Called from Reset data button.
 function resetGameData() {
     // clear ei pakollinen - varo käyttöä, jos localStoragessa on muutakin dataa!
     localStorage.clear();   
@@ -148,10 +168,11 @@ function resetGameData() {
     location.reload();
 }
 
-// Suoritetaan halutut funktiot heti kun sivu ladataan / Run functions immediately on page load
+// Suoritetaan halutut funktiot heti kun sivu ladataan
+// Run functions immediately on page load
 loadData();
 displayGames();
 
 // Testataan syötetyn JSON-datan tulostusta sivulle tallennusta varten
-// console.log(`<hr/><h2>Data JSON</h2><p style="color:#fff"><strong>Copy paste this into an external file to store or hardcode new games data:</strong></p><p style="color:#fff">${JSON.stringify(games)}</p>`);
+// Testing to print all the JSON data into console for easy saving to an external file.
 console.log("Copy paste to save all game data:" + JSON.stringify(games));
